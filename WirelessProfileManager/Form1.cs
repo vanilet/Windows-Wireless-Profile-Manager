@@ -190,5 +190,19 @@ namespace WirelessProfileManager
                 setDefaultCursor();
             }
         }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            currentInterface = null;
+
+            interfaceList.Clear();
+
+            cbxInterface.Dispose();
+
+            dataGridView_ScannedBssList.ClearSelection();
+            dataGridView_ScannedBssList.Rows.Clear();
+
+            dataGridView_ScannedBssList.Dispose();
+        }
     }
 }

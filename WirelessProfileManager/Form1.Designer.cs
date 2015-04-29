@@ -104,6 +104,7 @@
             this.Name = "Form1";
             this.ShowIcon = false;
             this.Text = "WirelessProfileManager";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_ScannedBssList)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
