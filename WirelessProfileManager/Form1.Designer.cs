@@ -28,14 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.cbxInterface = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.dataGridView_ScannedBssList = new System.Windows.Forms.DataGridView();
-            this.form1BindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.btnConnect = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_ScannedBssList)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.form1BindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -49,6 +47,7 @@
             // 
             // cbxInterface
             // 
+            this.cbxInterface.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxInterface.FormattingEnabled = true;
             this.cbxInterface.Location = new System.Drawing.Point(15, 34);
             this.cbxInterface.Name = "cbxInterface";
@@ -77,27 +76,35 @@
             this.dataGridView_ScannedBssList.RowTemplate.Height = 30;
             this.dataGridView_ScannedBssList.Size = new System.Drawing.Size(749, 335);
             this.dataGridView_ScannedBssList.TabIndex = 3;
+            this.dataGridView_ScannedBssList.SelectionChanged += new System.EventHandler(this.dataGridView_ScannedBssList_SelectionChanged);
             // 
-            // form1BindingSource
+            // btnConnect
             // 
-            this.form1BindingSource.DataSource = typeof(WirelessProfileManager.Form1);
+            this.btnConnect.Location = new System.Drawing.Point(655, 54);
+            this.btnConnect.Name = "btnConnect";
+            this.btnConnect.Size = new System.Drawing.Size(109, 37);
+            this.btnConnect.TabIndex = 4;
+            this.btnConnect.Text = "Connect";
+            this.btnConnect.UseVisualStyleBackColor = true;
+            this.btnConnect.Click += new System.EventHandler(this.btnConnect_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(782, 444);
+            this.Controls.Add(this.btnConnect);
             this.Controls.Add(this.dataGridView_ScannedBssList);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cbxInterface);
             this.Controls.Add(this.label1);
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
             this.Name = "Form1";
             this.ShowIcon = false;
             this.Text = "WirelessProfileManager";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_ScannedBssList)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.form1BindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -109,7 +116,7 @@
         private System.Windows.Forms.ComboBox cbxInterface;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView dataGridView_ScannedBssList;
-        private System.Windows.Forms.BindingSource form1BindingSource;
+        private System.Windows.Forms.Button btnConnect;
     }
 }
 

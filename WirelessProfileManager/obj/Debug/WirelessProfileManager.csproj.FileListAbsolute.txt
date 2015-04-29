@@ -15,3 +15,11 @@ C:\Users\CHEOLMIN\Documents\Visual Studio 2013\Projects\WirelessProfileManager\W
 C:\Users\CHEOLMIN\Documents\git\Windows-Wireless-Profile-Manager\WirelessProfileManager\bin\Debug\WirelessProfileManager.exe.config
 C:\Users\CHEOLMIN\Documents\git\Windows-Wireless-Profile-Manager\WirelessProfileManager\obj\Debug\WirelessProfileManager.exe
 C:\Users\CHEOLMIN\Documents\git\Windows-Wireless-Profile-Manager\WirelessProfileManager\obj\Debug\WirelessProfileManager.pdb
+C:\Users\CHEOLMIN\Documents\git\Windows-Wireless-Profile-Manager\WirelessProfileManager\bin\Debug\WirelessProfileManager.exe
+C:\Users\CHEOLMIN\Documents\git\Windows-Wireless-Profile-Manager\WirelessProfileManager\bin\Debug\WirelessProfileManager.pdb
+C:\Users\CHEOLMIN\Documents\git\Windows-Wireless-Profile-Manager\WirelessProfileManager\bin\Debug\ManagedWifi.dll
+C:\Users\CHEOLMIN\Documents\git\Windows-Wireless-Profile-Manager\WirelessProfileManager\bin\Debug\ManagedWifi.pdb
+C:\Users\CHEOLMIN\Documents\git\Windows-Wireless-Profile-Manager\WirelessProfileManager\obj\Debug\WirelessProfileManager.csprojResolveAssemblyReference.cache
+C:\Users\CHEOLMIN\Documents\git\Windows-Wireless-Profile-Manager\WirelessProfileManager\obj\Debug\WirelessProfileManager.Form1.resources
+C:\Users\CHEOLMIN\Documents\git\Windows-Wireless-Profile-Manager\WirelessProfileManager\obj\Debug\WirelessProfileManager.Properties.Resources.resources
+C:\Users\CHEOLMIN\Documents\git\Windows-Wireless-Profile-Manager\WirelessProfileManager\obj\Debug\WirelessProfileManager.csproj.GenerateResource.Cache
