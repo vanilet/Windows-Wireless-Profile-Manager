@@ -1182,55 +1182,65 @@ namespace NativeWifi
 			public byte[] SSID;
 		}
 
-		/// <summary>
-		/// Defines an 802.11 PHY and media type.
-		/// </summary>
-		/// <remarks>
-		/// Corresponds to the native <c>DOT11_PHY_TYPE</c> type.
-		/// </remarks>
-		public enum Dot11PhyType : uint
-		{
-			/// <summary>
-			/// Specifies an unknown or uninitialized PHY type.
-			/// </summary>
-			Unknown = 0,
-			/// <summary>
-			/// Specifies any PHY type.
-			/// </summary>
-			Any = Unknown,
-			/// <summary>
-			/// Specifies a frequency-hopping spread-spectrum (FHSS) PHY. Bluetooth devices can use FHSS or an adaptation of FHSS.
-			/// </summary>
-			FHSS = 1,
-			/// <summary>
-			/// Specifies a direct sequence spread spectrum (DSSS) PHY.
-			/// </summary>
-			DSSS = 2,
-			/// <summary>
-			/// Specifies an infrared (IR) baseband PHY.
-			/// </summary>
-			IrBaseband = 3,
-			/// <summary>
-			/// Specifies an orthogonal frequency division multiplexing (OFDM) PHY. 802.11a devices can use OFDM.
-			/// </summary>
-			OFDM = 4,
-			/// <summary>
-			/// Specifies a high-rate DSSS (HRDSSS) PHY.
-			/// </summary>
-			HRDSSS = 5,
-			/// <summary>
-			/// Specifies an extended rate PHY (ERP). 802.11g devices can use ERP.
-			/// </summary>
-			ERP = 6,
-			/// <summary>
-			/// Specifies the start of the range that is used to define PHY types that are developed by an independent hardware vendor (IHV).
-			/// </summary>
-			IHV_Start = 0x80000000,
-			/// <summary>
-			/// Specifies the end of the range that is used to define PHY types that are developed by an independent hardware vendor (IHV).
-			/// </summary>
-			IHV_End = 0xffffffff
-		}
+        /// <summary>
+        /// Defines an 802.11 PHY and media type.
+        /// </summary>
+        /// <remarks>
+        /// Corresponds to the native <c>DOT11_PHY_TYPE</c> type.
+        /// </remarks>
+        public enum Dot11PhyType : uint
+        {
+            /// <summary>
+            /// Specifies an unknown or uninitialized PHY type.
+            /// </summary>
+            Unknown = 0,
+            /// <summary>
+            /// Specifies any PHY type.
+            /// </summary>
+            Any = Unknown,
+            /// <summary>
+            /// Specifies a frequency-hopping spread-spectrum (FHSS) PHY. Bluetooth devices can use FHSS or an adaptation of FHSS.
+            /// </summary>
+            FHSS = 1,
+            /// <summary>
+            /// Specifies a direct sequence spread spectrum (DSSS) PHY.
+            /// </summary>
+            DSSS = 2,
+            /// <summary>
+            /// Specifies an infrared (IR) baseband PHY.
+            /// </summary>
+            IrBaseband = 3,
+            /// <summary>
+            /// Specifies an orthogonal frequency division multiplexing (OFDM) PHY. 802.11a devices can use OFDM.
+            /// </summary>
+            OFDM = 4,
+            /// <summary>
+            /// Specifies a high-rate DSSS (HRDSSS) PHY.
+            /// </summary>
+            HRDSSS = 5,
+            /// <summary>
+            /// Specifies an extended rate PHY (ERP). 802.11g devices can use ERP.
+            /// </summary>
+            ERP = 6,
+            /// <summary>
+            /// Specifies an 802.11n PHY type.
+            /// </summary>
+            HT = 7,
+            /// <summary>
+            /// Specifies the 802.11ac PHY type. This is the very high throughput PHY type specified in IEEE 802.11ac.
+            /// 
+            /// This alue is supported on Windows 8.1, Windows Server 2012 R2, and later.
+            /// </summary>
+            VHT = 8,
+            /// <summary>
+            /// Specifies the start of the range that is used to define PHY types that are developed by an independent hardware vendor (IHV).
+            /// </summary>
+            IHV_Start = 0x80000000,
+            /// <summary>
+            /// Specifies the end of the range that is used to define PHY types that are developed by an independent hardware vendor (IHV).
+            /// </summary>
+            IHV_End = 0xffffffff
+        }
 
 		/// <summary>
 		/// Defines a basic service set (BSS) network type.
