@@ -144,6 +144,9 @@ namespace WirelessProfileManager
             {
                 dataGridView_ScannedBssList.Update();
 
+                dataGridView_ScannedBssList.Sort(dataGridView_ScannedBssList.Columns[BssColumnNames.RSSI.GetHashCode()],
+                    ListSortDirection.Ascending);
+
                 setDefaultCursor();
 
                 cbxInterface.Enabled = true;
