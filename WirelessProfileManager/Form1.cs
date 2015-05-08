@@ -133,8 +133,105 @@ namespace WirelessProfileManager
                         item.dot11Bssid[3], item.dot11Bssid[4], item.dot11Bssid[5]);
 
                     entity[BssColumnNames.RSSI.GetHashCode()] = String.Format("{0}dbm", item.rssi.ToString());
+
                     dataGridView_ScannedBssList.Rows.Add(entity);
                 }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            finally
+            {
+                dataGridView_ScannedBssList.Update();
+
+                dataGridView_ScannedBssList.Sort(dataGridView_ScannedBssList.Columns[BssColumnNames.RSSI.GetHashCode()],
+                    ListSortDirection.Ascending);
+
+                setDefaultCursor();
+
+                cbxInterface.Enabled = true;
+            }
+        }
+
+        private void updateProfileList2()
+        {
+            try
+            {
+                btnConnect.Enabled = false;
+
+                setWaitCursor();
+
+                dataGridView_ScannedBssList.Rows.Clear();
+
+                var networkList = currentInterface.GetAvailableNetworkList(Wlan.WlanGetAvailableNetworkFlags.IncludeAllManualHiddenProfiles);
+
+                List<String[]> processed = new List<String[]>();
+
+                foreach(var item in networkList)
+                {
+                    String SSID = System.Text.Encoding.UTF8.GetString(item.dot11Ssid.SSID);
+
+                    String[] temp = new String[3];
+
+                    temp[0] = SSID;
+                    temp[1] = item.dot11BssType.ToString();
+                    temp[2] = item.securityEnabled.ToString();
+
+                    if(processed.Contains(temp))
+                        continue;
+
+                    processed.Add(temp);
+
+                    String[] entity = new String[dataGridView_ScannedBssList.ColumnCount];
+
+                    entity[BssColumnNames.SSID.GetHashCode()] = SSID;
+
+                    foreach(var bssItem in currentInterface.GetNetworkBssList(item.dot11Ssid, item.dot11BssType, item.securityEnabled))
+                    {
+                        switch(bssItem.dot11BssPhyType)
+                        {
+                            case Wlan.Dot11PhyType.OFDM:
+                                entity[BssColumnNames.PHY_TYPE.GetHashCode()] = String.Format("802.11{0}", "a");
+                                break;
+
+                            case Wlan.Dot11PhyType.HRDSSS:
+                                entity[BssColumnNames.PHY_TYPE.GetHashCode()] = String.Format("802.11{0}", "b");
+                                break;
+
+                            case Wlan.Dot11PhyType.ERP:
+                                entity[BssColumnNames.PHY_TYPE.GetHashCode()] = String.Format("802.11{0}", "g");
+                                break;
+
+                            case Wlan.Dot11PhyType.HT:
+                                entity[BssColumnNames.PHY_TYPE.GetHashCode()] = String.Format("802.11{0}", "n");
+                                break;
+
+                            case Wlan.Dot11PhyType.VHT:
+                                entity[BssColumnNames.PHY_TYPE.GetHashCode()] = String.Format("802.11{0}", "ac");
+                                break;
+
+                            default:
+                                entity[BssColumnNames.PHY_TYPE.GetHashCode()] = String.Format("802.11{0}", bssItem.dot11BssPhyType.ToString());
+                                break;
+                        }
+
+                        entity[BssColumnNames.SECURITY.GetHashCode()] = item.securityEnabled.ToString();
+
+                        entity[BssColumnNames.AUTH.GetHashCode()] = item.dot11DefaultAuthAlgorithm.ToString();
+                        entity[BssColumnNames.CIPHER.GetHashCode()] = item.dot11DefaultCipherAlgorithm.ToString();
+
+                        entity[BssColumnNames.BSSID.GetHashCode()] = String.Format("{0:x}:{1:x}:{2:x}:{3:x}:{4:x}:{5:x}",
+                            bssItem.dot11Bssid[0], bssItem.dot11Bssid[1], bssItem.dot11Bssid[2],
+                            bssItem.dot11Bssid[3], bssItem.dot11Bssid[4], bssItem.dot11Bssid[5]);
+
+                        entity[BssColumnNames.RSSI.GetHashCode()] = String.Format("{0}dbm", bssItem.rssi.ToString());
+
+                        dataGridView_ScannedBssList.Rows.Add(entity);
+                    }
+                }
+
+                processed.Clear();
             }
             catch(Exception ex)
             {
@@ -185,7 +282,7 @@ namespace WirelessProfileManager
 
         void currentInterface_WlanNotification(Wlan.WlanNotificationData notifyData)
         {
-            Invoke(new Action(updateProfileList));
+            Invoke(new Action(updateProfileList2));
         }
 
         private void dataGridView_ScannedBssList_SelectionChanged(object sender, EventArgs e)

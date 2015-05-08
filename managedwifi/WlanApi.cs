@@ -429,7 +429,7 @@ namespace NativeWifi
 			}
 
 			/// <summary>
-			/// Connects to the specified wireless network.
+			/// Connects to the specified wireless network.(SSID)
 			/// </summary>
 			/// <remarks>
 			/// The method returns immediately. Progress is reported through the <see cref="WlanNotification"/> event.
@@ -446,6 +446,25 @@ namespace NativeWifi
 				Marshal.DestroyStructure(connectionParams.dot11SsidPtr, ssid.GetType());
 				Marshal.FreeHGlobal(connectionParams.dot11SsidPtr);
 			}
+
+            /// <summary>
+            /// Connects to the specified wireless network.(SSID & BSSID)
+            /// </summary>
+            /// <remarks>
+            /// The method returns immediately. Progress is reported through the <see cref="WlanNotification"/> event.
+            /// </remarks>
+            public void Connect(Wlan.WlanConnectionMode connectionMode, Wlan.Dot11BssType bssType, Wlan.Dot11Ssid ssid,  byte[] bssid, Wlan.WlanConnectionFlags flags)
+            {
+                Wlan.WlanConnectionParameters connectionParams = new Wlan.WlanConnectionParameters();
+                connectionParams.wlanConnectionMode = connectionMode;
+                connectionParams.dot11SsidPtr = Marshal.AllocHGlobal(Marshal.SizeOf(ssid));
+                Marshal.StructureToPtr(ssid, connectionParams.dot11SsidPtr, false);
+                connectionParams.dot11BssType = bssType;
+                connectionParams.flags = flags;
+                Connect(connectionParams);
+                Marshal.DestroyStructure(connectionParams.dot11SsidPtr, ssid.GetType());
+                Marshal.FreeHGlobal(connectionParams.dot11SsidPtr);
+            }
 
 			/// <summary>
 			/// Deletes a profile.

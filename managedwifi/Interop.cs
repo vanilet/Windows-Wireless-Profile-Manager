@@ -752,6 +752,30 @@ namespace NativeWifi
 			public uint ieSize;
 		}
 
+        /// <summary>
+        /// The DOT11_BSSID_LIST structure contains a list of basic service set (BSS) identifiers.
+        /// </summary>
+        [StructLayout(LayoutKind.Sequential)]
+        public struct Dot11BssidList
+        {
+
+            /// <summary>
+            /// the number of entries in this structure.
+            /// </summary>
+            ulong numOfEntries;
+
+            /// <summary>
+            /// The total number of entries supported.
+            /// </summary>
+            ulong totalNumOfEntries;
+
+            /// <summary>
+            /// A list of BSS identifiers. A BSS identifier is stored as a DOT11_MAC_ADDRESS type.
+            /// </summary>
+            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 6)]
+            public byte[] bssid; 
+        }
+
 		/// <summary>
 		/// Contains the set of supported data rates.
 		/// </summary>
